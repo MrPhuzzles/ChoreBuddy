@@ -28,5 +28,8 @@
     "express.js": "^1.0.0",
     "mysql2": "^2.3.3",
     "sequelize": "^6.24.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.5.0"
   }
 }

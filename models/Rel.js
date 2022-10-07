@@ -1,11 +1,11 @@
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connection");
+const sequelize = require("../config/connection.js");
 
-class Relation extends Model {}
+class Rel extends Model {}
 
-Relation.init(
+Rel.init(
   {
-    id: {
+      id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
@@ -28,11 +28,12 @@ Relation.init(
   },
   {
     sequelize,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'relation',
-    timestamps: false
+    modelName: 'rel'
+
   }
 );
 
-module.exports = Relation;
+module.exports = Rel;

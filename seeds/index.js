@@ -1,7 +1,8 @@
-// const {faker} = require('@faker-js/faker');
-// const {User, Post, Reviews, Rel} = require('../models');
-const sequelize = require('../config/connection');
 const seedUsers = require('./user-seeds');
+const seedPosts = require('./post-seeds');
+const seedReviews = require('./reviews-seeds');
+const seedRels = require('./rel-seeds');
+const sequelize = require('../config/connection');
 
 // for (let i = 0; i< 10; i++) {
 //   const user = new User({
@@ -35,17 +36,20 @@ const seedUsers = require('./user-seeds');
 const seedAll = async () => {
   await sequelize.sync({ force: true });
   console.log('--------------');
-  
   await seedUsers();
   console.log('--------------');
 
-  // await seedPosts();
-  // console.log('--------------');
+  await seedPosts();
+  console.log('--------------');
 
-  // await seedReviews();
-  // console.log('--------------');
+  await seedReviews();
+  console.log('--------------');
+
+  await seedRels();
+  console.log('--------------');
 
   process.exit(0);
 };
 
 seedAll();
+

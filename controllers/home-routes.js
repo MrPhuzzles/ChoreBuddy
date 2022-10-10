@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     .then(dbPostData => {
         const post = dbPostData.map((post) => post.get({plain:true}));
 
-        res.render("homepage", {post})
+        res.render('homepage', {post})
     })
     .catch(err => {
         console.log(err);
@@ -21,5 +21,17 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+  
+    res.render('login');
+  });
+
+  router.get('/signup', (req, res) => {
+    res.render ('signup');
+  });
 
 module.exports = router;

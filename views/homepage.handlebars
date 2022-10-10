@@ -1,20 +1,19 @@
 
-
+{{#each post}}
 <div class="row mb-4 blog" >
   <div class="col-md-5" >
     <h2>
       
      
-      <a href="/chorebuddy/{{chorebuddy.id}}">{{chorebuddy.chorebuddy_title}}</a>
+      <a href="/homepage/{{id}}">{{title}}</a>
     </h2>
   
-    <p>Created by {{chorebuddy.user.username}} on {{format_date chorebuddy.date_created}}</p> 
+    <p>Created by {{user.username}} on {{created_at}}</p> 
   </div>
   <div class="col-md-7">
     <p>
-      {{chorebuddy.description}}
+      {{content}}
     </p>
   </div>
 </div>
 {{/each}}
-

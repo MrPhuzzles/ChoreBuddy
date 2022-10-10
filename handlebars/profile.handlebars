@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Hello, {{username}}!</h2> 
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Create listing:</h3>
+
+    <form class="form new-blog-form">
+      <div class="form-group box-sizing">
+        <label for="chorebuddy_title">Title:</label>
+        <input class="form-input" type="text" id="chorebuddy_title" chorebuddy_title="chorebuddy_title" />
+      </div>
+    
+      <div class="form-group">
+        <label for="chorebuddy-desc">description:</label>
+        <textarea class="form-input" id="chorebuddy-desc" chorebuddy_title="chorebuddy-desc"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+
+  {{#if chorebuddy.length}}
+  <div class="col-md-6 blog-list">
+    <h3>Current Listings:</h3>
+
+    
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/chorebuddy/{{chorebuddy.id}}">{{chorebuddy.chorebuddy_title}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{chorebuddy.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="profile.js"></script>

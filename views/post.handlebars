@@ -1,0 +1,34 @@
+<div>
+  <div class="row mb-4 blog" >
+  <div class="col-md-5" >
+    <h2>
+      {{post.title}}
+    </h2>
+    <p>Created by {{post.user.username}} on {{post.created_at}}</p> 
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{post.content}}
+    </p>
+    <p>{{post.address}} {{post.city}} {{post.province}} {{post.postal}}</p>
+  </div>
+</div>
+
+
+
+{{!-- <div>
+
+<form class="new-comment-form" data-blogid={{id}}>
+  <div>
+    <textarea class="ml-5" id='comment_description' name="comment-body"></textarea>
+  </div>
+  <div>
+    <button class="button is-warning ml-5 mb-5" type="submit">Add Comment</button>
+  </div>
+</form>
+
+</div> --}}
+ {{!-- {{#each comments as |comment|}}
+ <div style="border-style: solid;">
+ <p>{{comment.comment_description}}</p>
+ </div> --}}

@@ -13,14 +13,12 @@ User.hasMany(Post, {
 Post.belongsTo(User, {
     foreignKey: 'user_id',
 });
-User.belongsToMany(Reviews, {
-    through:Rel,
+User.hasMany(Reviews, {
     foreignKey: 'user_id',
 });
 
-Reviews.belongsToMany(User, {
-    through: Rel,
-    foreignKey: 'review_id',
+Reviews.belongsTo(User, {
+    foreignKey: 'user_id',
     
 });
 

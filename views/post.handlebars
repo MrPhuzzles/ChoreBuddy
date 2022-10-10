@@ -12,8 +12,15 @@
     </p>
     <p>{{post.address}} {{post.city}} {{post.province}} {{post.postal}}</p>
   </div>
+    <form class="accept-form">
+      {{#if loggedIn}}
+        <button type="submit" class="accept-btn">Accept</button> 
+      {{/if}}
+    </form>
 </div>
-
+{{#if loggedIn}}
+<script src="/javascript/accept-req.js"></script>
+{{/if}}
 
 
 {{!-- <div>

@@ -6,10 +6,10 @@ const {faker} = require('@faker-js/faker');
 const reviewdata = []
 
 const genfunction =  function() {
-    for (let i = 0; i< 10; i++) {
+    for (let i = 0; i< 5; i++) {
         const review = {
             comment: faker.random.words(3),
-            user_id: Math.floor(Math.random() * 10+1)
+            user_id: Math.floor(Math.random() * 5+1)
         };
         reviewdata.push(review)
     }

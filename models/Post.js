@@ -35,6 +35,10 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    request_taken:{
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
     user_id:{
         type:DataTypes.INTEGER,
         references: {

@@ -6,7 +6,7 @@ const userdata = [];
 
 const genfunction = function () {
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 5; i++) {
     const user = {
       username: faker.name.firstName(),
       email: faker.internet.email(),

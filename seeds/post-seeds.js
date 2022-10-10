@@ -8,15 +8,16 @@ console.log()
 const postdata = []
 
 const genfunction =  function() {
-    for (let i = 0; i< 10; i++) {
+    for (let i = 0; i< 5; i++) {
         const post = {
             title: faker.random.word(),
-            content: faker.lorem.lines(),
+            content: faker.random.words(4),
             province: faker.address.state(),
             city: faker.address.city(),
             address: faker.address.streetAddress(),
             postal: faker.address.zipCode(),
-            user_id: Math.floor(Math.random() * 10+1)
+            request_taken: false,
+            user_id: Math.floor(Math.random() * 5+1)
         };
         postdata.push(post)
     }

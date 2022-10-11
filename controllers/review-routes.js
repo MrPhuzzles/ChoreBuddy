@@ -1,16 +1,25 @@
 const router = require('express').Router();
-const {User, Post, Reviews} = require('../models');
+const {User, Post, Reviews, Rel} = require('../models');
 
 router.get('/', (req,res) => {
     Reviews.findAll({
-        attributes: ['id', 'review_type', 'comment', 'user_id', 'created_at'],
-        include: [{
-            model: User,
-            attributes: ["username", "email"]
-        }]
+
+        attributes: ['id', 'comment', ['user_id', 'user_review'], 'created_at'],
+        include: [
+            {
+                model: User,
+                through:Rel,
+                attributes: ['username'],
+            },
+            {
+                model: Rel,
+                attributes: [['user_id','reviewer'], 'review_id']
+            }
+        ]
     })
     .then(dbReviewsData => {
         const reviews = dbReviewsData.map((review) => review.get({plain:true}));
+        console.log(reviews)
 
         res.render('reviews', {reviews, loggedIn: req.session.loggedIn})
     })

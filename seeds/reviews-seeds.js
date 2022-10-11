@@ -8,7 +8,7 @@ const reviewdata = []
 const genfunction =  function() {
     for (let i = 0; i< 5; i++) {
         const review = {
-            review_type: faker.random.word(),
+            // review_type: faker.random.word(),
             comment: faker.random.words(3),
             user_id: Math.floor(Math.random() * 5+1)
         };

@@ -10,10 +10,6 @@
 
     <form class="new-reviews-form">
       <div>
-        <label for="review-type">Review Type</label>
-        <input type="text" id="review-type" name="review-type" />
-      </div>
-      <div>
         <label for="review-comment">Comment</label>
         <textarea id="review-comment" name="review-comment"></textarea>
       </div>
@@ -30,11 +26,12 @@
             <p>
               {{comment}}
             </p>
-            <p>Created by {{user.username}} on {{created_at}}</p>
-            <p>Review Type: {{review_type}}</p>
+            <p>Created by {{username}} on {{created_at}}</p>
           </div>
         </div>
     {{/each}}
   </div>
 
 </div>
+
+<script src="/javascript/new-reviews.js"></script>

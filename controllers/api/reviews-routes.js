@@ -7,9 +7,10 @@ router.get('/', (req, res) => {
         attributes: ['comment', 'created_at'],
         include: [
             {
-                model: User,
-                through: Rel,
-                attributes: ['username']
+                // model: User,
+                // attributes: ['username']
+                model:Rel,
+                attributes: ['user_id', 'review_id']
             }
         ]
     })
@@ -46,6 +47,19 @@ router.get('/:id', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+    Reviews.create({
+        comment: req.body.comment,
+        user_id: req.session.user_id
+    })
+    .then(dbReviewData => {
+        res.json(dbReviewData)
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    })
+})
 
 
 

@@ -45,8 +45,8 @@ const seedAll = async () => {
   await seedReviews();
   console.log('--------------');
 
-  // await seedRels();
-  // console.log('--------------');
+  await seedRels();
+  console.log('--------------');
 
   process.exit(0);
 };

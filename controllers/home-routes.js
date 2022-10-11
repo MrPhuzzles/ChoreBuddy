@@ -65,4 +65,30 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
+// router.get('/reviews', (req, res) => {
+//     User.findOne({
+//         where: {
+//             username: req.body.username
+//         },
+//         attributes: ['id','username', 'email'],
+//         include: [
+//             {
+//                 model:Reviews,
+//                 attributes: ['id', 'comment', ['user_id', 'user_review'], 'created_at'],
+//                 through: Rel,
+//                 attributes: [['user_id', 'reviewer'], 'review_id']
+//             }
+//         ]
+//     })
+//     .then(dbUserData => {
+//         const reviewdata = dbUserData.map((reviews) => reviews.get({plain:true}));
+
+//         res.render('reviews', {reviewdata, loggedIn:req.session.loggedIn})
+//     })
+//     .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//     })
+// })
+
 module.exports = router;

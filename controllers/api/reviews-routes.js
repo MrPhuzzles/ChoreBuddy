@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {User, Post, Reviews, Rel} = require('../../models');
-
+const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
     Reviews.findAll({
@@ -47,7 +47,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     Reviews.create({
         comment: req.body.comment,
         user_id: req.session.user_id

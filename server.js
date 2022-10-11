@@ -22,10 +22,10 @@ const sess = {
 
 app.use(session(sess));
 
-// const helpers = require('./utils/helpers');
+const helpers = require('./utils/helpers');
 
 const hbs = exphbs.create({ 
-    // helpers 
+    helpers 
 });
 
 app.engine('handlebars', hbs.engine);

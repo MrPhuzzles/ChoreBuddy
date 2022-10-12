@@ -2,9 +2,7 @@ const router = require("express").Router();
 const { User, Post, Reviews, Rel } = require("../models");
 const sequelize = require('../config/connection');
 const {Op} = require('sequelize');
-// const operatorsAliases = {
-//     $ne: Op.ne
-// }
+
 
 router.get("/", (req, res) => {
     if(req.session){
@@ -19,7 +17,6 @@ router.get("/", (req, res) => {
         as: 'requester',
         attributes: ["id",["username", "requester_name"]],
         where: {
-            // requester_name: {[Op.ne]:req.session.username}
             id:{[Op.ne]: req.session.user_id}
         }
       },
@@ -76,7 +73,7 @@ router.get('/post/:id', (req, res) => {
         where:{
             id:req.params.id
         },
-        attributes: ["id","title", "content", "created_at", "address", "city", "province", "postal"],
+        attributes: ["id","title", "content", "created_at", "address", "city", "province", "postal", "request_taken"],
         include: [
             {
                 model: User,

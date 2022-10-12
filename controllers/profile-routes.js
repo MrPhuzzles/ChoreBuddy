@@ -25,8 +25,10 @@ router.get("/", (req, res) => {
   })
     .then((dbPostData) => {
       const post = dbPostData.map((post) => post.get({ plain: true }));
-
-      res.render("profile", { post, loggedIn: req.session.loggedIn });
+        console.log(post)
+        const requester = {requester: req.session.username}
+        console.log(requester)
+      res.render("profile", { post, requester, loggedIn: req.session.loggedIn });
     })
     .catch((err) => {
       console.log(err);
@@ -41,7 +43,7 @@ router.get("/accepted", (req, res) => {
         where:{
             volunteer_id: req.session.user_id
         },
-      attributes: ["id", "title", "content", "created_at"],
+      attributes: ["id", "title", "content", "created_at", "request_taken"],
       include: [
           {
               model: User,
@@ -61,7 +63,7 @@ router.get("/accepted", (req, res) => {
         console.log("test")
         const acceptedPost = dbPostData.map((post) => post.get({ plain: true }));
         console.log(acceptedPost)
-        res.render("profile", { acceptedPost, loggedIn: req.session.loggedIn });
+        res.render("accepted-listings", { acceptedPost, loggedIn: req.session.loggedIn });
       })
       .catch((err) => {
         console.log(err);

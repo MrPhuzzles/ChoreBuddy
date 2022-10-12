@@ -1,0 +1,20 @@
+
+<article>
+  <a href="/profile"> &larr; Back to dashboard</a><div class="col-md-6 blog-list">
+    <h3>Accepted Listings:</h3>
+
+    {{#each acceptedPost}}
+        <div class="row mb-4 blog">
+          <div class="col-md-5">
+            <a href="/post/{{id}}">{{title}}</a>
+            <p>Created by {{requester.requester_name}} on {{created_at}}</p>
+          </div>
+          <div class="col-md-7">
+            <p>
+              {{content}}
+            </p>
+          </div>
+        </div>
+    {{/each}}
+  </div>
+  </article> 

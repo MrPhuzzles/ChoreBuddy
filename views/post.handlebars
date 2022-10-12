@@ -14,7 +14,9 @@
   </div>
     <form class="accept-form">
       {{#if loggedIn}}
-        <button type="submit" class="accept-btn">Accept</button> 
+        {{#unless post.request_taken}}
+        <button type="submit" class="accept-btn">Accept</button>
+        {{/unless}}
       {{/if}}
     </form>
 </div>
@@ -22,20 +24,3 @@
 <script src="/javascript/accept-req.js"></script>
 {{/if}}
 
-
-{{!-- <div>
-
-<form class="new-comment-form" data-blogid={{id}}>
-  <div>
-    <textarea class="ml-5" id='comment_description' name="comment-body"></textarea>
-  </div>
-  <div>
-    <button class="button is-warning ml-5 mb-5" type="submit">Add Comment</button>
-  </div>
-</form>
-
-</div> --}}
- {{!-- {{#each comments as |comment|}}
- <div style="border-style: solid;">
- <p>{{comment.comment_description}}</p>
- </div> --}}

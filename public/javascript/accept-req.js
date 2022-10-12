@@ -6,7 +6,7 @@ event.preventDefault();
     
       const request_taken = 1
 
-    const response = await fetch(`/api/post/${post_id}`, {
+      const response = await fetch(`/api/post/${post_id}`, {
       method: 'put',
       body: JSON.stringify( {
         request_taken

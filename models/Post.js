@@ -39,8 +39,16 @@ Post.init(
         type: DataTypes.BOOLEAN,
         defaultValue: false
     },
-    user_id:{
+    requester_id:{
         type:DataTypes.INTEGER,
+        references: {
+            model:'user',
+            key: 'id'
+        }
+    },
+    volunteer_id:{
+        type:DataTypes.INTEGER,
+        defaultValue: null,
         references: {
             model:'user',
             key: 'id'

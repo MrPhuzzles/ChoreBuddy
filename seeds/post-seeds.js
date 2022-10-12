@@ -17,7 +17,7 @@ const genfunction =  function() {
             address: faker.address.streetAddress(),
             postal: faker.address.zipCode(),
             request_taken: false,
-            user_id: Math.floor(Math.random() * 5+1)
+            requester_id: i+1
         };
         postdata.push(post)
     }

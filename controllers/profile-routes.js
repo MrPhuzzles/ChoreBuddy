@@ -4,14 +4,23 @@ const { User, Post, Reviews, Rel } = require("../models");
 router.get("/", (req, res) => {
   Post.findAll({
     where: {
-      user_id: req.session.user_id,
+      requester_id: req.session.user_id,
     },
     attributes: ["id", "title", "content", "created_at"],
     include: [
-      {
-        model: User,
-        attributes: ["username"],
-      },
+        {
+            model: User,
+            as: 'requester',
+            attributes: ["id",["username", "requester_name"]],
+            where: {
+                id: req.session.user_id
+            }
+          },
+          {
+            model:User,
+            as:'volunteer',
+            attributes: [['username', 'volunteer_name' ]]
+          }
     ],
   })
     .then((dbPostData) => {
@@ -26,4 +35,37 @@ router.get("/", (req, res) => {
 });
 
 
+router.get("/accepted", (req, res) => {
+    Post.findAll(
+        {
+        where:{
+            volunteer_id: req.session.user_id
+        },
+      attributes: ["id", "title", "content", "created_at"],
+      include: [
+          {
+              model: User,
+              as: 'requester',
+              attributes: ["id",["username", "requester_name"]],
+
+            },
+            {
+              model:User,
+              as:'volunteer',
+              attributes: [['username', 'volunteer_name' ]],
+            }
+      ],
+    }
+    )
+      .then((dbPostData) => {
+        console.log("test")
+        const acceptedPost = dbPostData.map((post) => post.get({ plain: true }));
+        console.log(acceptedPost)
+        res.render("profile", { acceptedPost, loggedIn: req.session.loggedIn });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
 module.exports = router;

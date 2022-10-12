@@ -1,23 +1,35 @@
+const { Reviews } = require("../models");
+const { faker } = require("@faker-js/faker");
 
-const { Reviews } = require('../models');
-const {faker} = require('@faker-js/faker');
+const reviewdata = [
+  {
+    comment: faker.random.words(3),
+    reviewer_id: 1,
+    reviewee_id: 2,
+  },
+  {
+    comment: faker.random.words(3),
+    reviewer_id: 2,
+    reviewee_id: 1,
+  },
+  {
+    comment: faker.random.words(3),
+    reviewer_id: 3,
+    reviewee_id: 2,
+  },
+  {
+    comment: faker.random.words(3),
+    reviewer_id: 4,
+    reviewee_id: 3,
+  },
+  {
+    comment: faker.random.words(3),
+    reviewer_id: 1,
+    reviewee_id: 5,
+  },
+];
 
-
-const reviewdata = []
-
-const genfunction =  function() {
-    for (let i = 0; i< 5; i++) {
-        const review = {
-            // review_type: faker.random.word(),
-            comment: faker.random.words(3),
-            user_id: Math.floor(Math.random() * 5+1)
-        };
-        reviewdata.push(review)
-    }
-}
-genfunction();
-
-
-const seedReviews = () => Reviews.bulkCreate(reviewdata, {individualHooks: true});
+const seedReviews = () =>
+  Reviews.bulkCreate(reviewdata, { individualHooks: true });
 
 module.exports = seedReviews;

@@ -6,37 +6,38 @@ const Rel = require('./Rel');
 
 // create associations
 User.hasMany(Post, {
-    foreignKey: 'user_id',
+    foreignKey: 'requester_id',
+});
+
+User.hasMany(Post, {
+    foreignKey: 'volunteer_id',
 });
 
 Post.belongsTo(User, {
-    foreignKey: 'user_id',
-});
-User.belongsToMany(Reviews, {
-    through:'rel',
-    foreignKey: 'user_id',
+    foreignKey: 'requester_id',
+    as: 'requester'
 });
 
-Reviews.belongsToMany(User, {
-    through: 'rel',
-    foreignKey: 'review_id',
+Post.belongsTo(User, {
+    foreignKey: 'volunteer_id',
+    as: 'volunteer'
 });
 
-User.hasMany(Rel, {
-    foreignKey: 'user_id',
+User.hasMany(Reviews, {
+    foreignKey: 'reviewer_id',
+});
+User.hasMany(Reviews, {
+    foreignKey: 'reviewee_id',
+});
+Reviews.belongsTo(User, {
+    foreignKey: 'reviewer_id',
+    as: 'reviewer'
+});
+Reviews.belongsTo(User, {
+    foreignKey: 'reviewee_id',
+    as: 'reviewee'
 });
 
-Rel.belongsTo(User, {
-    foreignKey: 'user_id',
-});
-
-Reviews.hasMany(Rel, {
-    foreignKey: 'review_id',
-});
-
-Rel.belongsTo(Reviews, {
-    foreignKey: 'review_id',
-});
 
 
 

@@ -1,29 +1,75 @@
 const router = require("express").Router();
 const { User, Post, Reviews, Rel } = require("../models");
+const sequelize = require('../config/connection');
+const {Op} = require('sequelize');
+// const operatorsAliases = {
+//     $ne: Op.ne
+// }
 
 router.get("/", (req, res) => {
+    if(req.session){
   Post.findAll({
     where: {
-        request_taken: false
+        request_taken: false,
     },
     attributes: ["id","title", "content", "created_at", ],
     include: [
       {
         model: User,
-        attributes: ["username"],
+        as: 'requester',
+        attributes: ["id",["username", "requester_name"]],
+        where: {
+            // requester_name: {[Op.ne]:req.session.username}
+            id:{[Op.ne]: req.session.user_id}
+        }
       },
+      {
+        model:User,
+        as:'volunteer',
+        attributes: [['username', 'volunteer_name' ]]
+      }
     ],
   })
     .then((dbPostData) => {
       const post = dbPostData.map((post) => post.get({ plain: true }));
-
+        // console.log(post)
       res.render("homepage", { post, loggedIn: req.session.loggedIn});
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
-});
+} else {
+    Post.findAll({
+        where: {
+            request_taken: false,
+        },
+        attributes: ["id","title", "content", "created_at", ],
+        include: [
+          {
+            model: User,
+            as: 'requester',
+            attributes: ["id",["username", "requester_name"]],
+          },
+          {
+            model:User,
+            as:'volunteer',
+            attributes: [['username', 'volunteer_name' ]]
+          }
+        ],
+      })
+        .then((dbPostData) => {
+          const post = dbPostData.map((post) => post.get({ plain: true }));
+            console.log(post)
+          res.render("homepage", { post, loggedIn: req.session.loggedIn});
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json(err);
+        });
+}
+})
+;
 
 router.get('/post/:id', (req, res) => {
     Post.findOne({
@@ -32,10 +78,16 @@ router.get('/post/:id', (req, res) => {
         },
         attributes: ["id","title", "content", "created_at", "address", "city", "province", "postal"],
         include: [
-          {
-            model: User,
-            attributes: ["username"],
-          },
+            {
+                model: User,
+                as: 'requester',
+                attributes: ["id",["username", "requester_name"]],
+              },
+              {
+                model:User,
+                as:'volunteer',
+                attributes: [['username', 'volunteer_name' ]]
+              }
         ],
       })
       .then (dbPostData => {

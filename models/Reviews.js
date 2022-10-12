@@ -19,13 +19,20 @@ Reviews.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    user_id: {
+    reviewer_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
         key: 'id'
       }
-    }
+    },
+    reviewee_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'post',
+          key: 'requester_id'
+        }
+      }
   },
   {
     sequelize,

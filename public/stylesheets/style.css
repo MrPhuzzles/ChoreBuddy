@@ -39,6 +39,9 @@ main {
     line-height: 150%;
 }
 
+.listing-title {
+    text-transform: capitalize;
+}
 
 .card-text {
     margin-top: 40px;

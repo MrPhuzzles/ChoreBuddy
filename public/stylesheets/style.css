@@ -33,7 +33,6 @@ main {
     padding: 2% 4%;
 }
 
-
 .post {
     margin-bottom: 2%;
     line-height: 150%;
@@ -54,6 +53,21 @@ main {
 .dashboard-greeting {
     font-weight: bold;
     text-transform: capitalize;
+}
+
+.homepage-greeting {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.homepage-greeting h2 {
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.navbar {
+    background-color: #b4d18e;
+    border-bottom: 1px solid #ccc;
 }
 
 footer {

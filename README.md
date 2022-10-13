@@ -10,6 +10,8 @@ Originally planned to build a website to assist the elderly and disabled with da
 * Javascript 
 * Handlebars 
 * node
+* NPM
+* express js
 * mySQL
 * Faker API
 

@@ -79,7 +79,7 @@ router.post("/", withAuth, (req, res) => {
     province: req.body.province,
     postal: req.body.postal,
     request_taken: 0,
-    user_id: req.session.user_id,
+    requester_id: req.session.user_id,
   })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {

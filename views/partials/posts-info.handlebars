@@ -1,19 +1,23 @@
- {{#each post}}
-        <div class="row mb-4 blog">
-          <div class="col-md-5">
-            <h2>
-            <a href="/post/{{id}}">{{title}}</a>
-            </h2>
-            {{#if loggedIn}}
-            <p>Created by <a href="/reviews/{{requester_id}}">{{ requester.requester_name}}</a> on {{format_date created_at}}</p>
-            {{else}}
-            <p>Created by {{ requester.requester_name}} on {{format_date created_at}}</p>
-            {{/if}}
-          </div>
-          <div class="col-md-7">
-            <p>
-              {{content}}
-            </p>
-          </div>
-        </div>
-    {{/each}}
+{{#each post}}
+<div class="col">
+  <div class="card text-bg-light mb-3">
+    <div class="card-body">
+      <h2 class="listing-title">
+        <a href="/post/{{id}}">{{title}}</a>
+      </h2>
+      <div class="card-subtitle">
+        {{#if loggedIn}}
+        <p>Created by <a href="/reviews/{{requester_id}}">{{ requester.requester_name}}</a> on {{format_date created_at}}</p>
+          {{else}}
+       <p>Created by {{ requester.requester_name}}on {{format_date created_at}}
+      {{/if}}
+      </div>
+      <div class="card-text">
+        <p>
+          {{content}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{{/each}}

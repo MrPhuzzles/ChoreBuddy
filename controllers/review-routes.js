@@ -3,7 +3,9 @@ const {User, Post, Reviews, Rel} = require('../models');
 
 router.get('/', (req,res) => {
     Reviews.findAll({
-
+        where: {
+                reviewee_id:req.session.user_id
+        },
         attributes: ['id', 'comment', 'reviewer_id', 'reviewee_id', 'created_at'],
         include: [
             {

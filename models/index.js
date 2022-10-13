@@ -26,16 +26,15 @@ Post.belongsTo(User, {
 User.hasMany(Reviews, {
     foreignKey: 'reviewer_id',
 });
-User.hasMany(Reviews, {
+Post.hasMany(Reviews, {
     foreignKey: 'reviewee_id',
 });
 Reviews.belongsTo(User, {
     foreignKey: 'reviewer_id',
     as: 'reviewer'
 });
-Reviews.belongsTo(User, {
+Reviews.belongsTo(Post, {
     foreignKey: 'reviewee_id',
-    as: 'reviewee'
 });
 
 

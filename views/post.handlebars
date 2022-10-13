@@ -1,30 +1,37 @@
 <div>
-  <div class="row mb-4 blog" >
-  <div class="col-md-5" >
-    <h2>
-      {{post.title}}
-    </h2>
-    {{#if loggedIn}}
-    <p>Created by <a href="/reviews">{{post.requester.requester_name}}</a> on {{format_date post.created_at}}</p> 
-    {{else}}
-    <p>Created by {{post.requester.requester_name}} on {{format_date post.created_at}}</p>
-    {{/if}}
-  </div>
-  <div class="col-md-7">
-    <p>
-      {{post.content}}
-    </p>
-    <p>{{post.address}} {{post.city}} {{post.province}} {{post.postal}}</p>
-  </div>
-    <form class="accept-form">
-      {{#if loggedIn}}
-        {{#unless post.request_taken}}
-        <button type="submit" class="accept-btn">Accept</button>
-        {{/unless}}
-      {{/if}}
-    </form>
-</div>
-{{#if loggedIn}}
-<script src="/javascript/accept-req.js"></script>
-{{/if}}
+  <div class="card text-center">
+    <div class="card-header">
+      <h2>
+        {{post.title}}
+      </h2>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{post.address}} {{post.city}}
+        {{post.province}} {{post.postal}}</h5>
+      <div class="card-text">
+        <h6 class="post-description">What's the job?</h6>
+        <p>
+          {{post.content}}
+        </p>
+      </div>
 
+      <form class="accept-form">
+        {{#if loggedIn}}
+        {{#unless post.request_taken}}
+        <button type="submit" class="btn btn-success accept-btn">Accept</button>
+        {{/unless}}
+        {{/if}}
+      </form>
+    </div>
+    <div class="card-footer">
+      {{#if loggedIn}}
+      <p>Created by <a href="/reviews">{{post.requester.requester_name}}</a> on {{format_date post.created_at}}</p>
+      {{else}}
+      <p>Created by {{post.requester.requester_name}} on {{format_date post.created_at}}</p>
+      {{/if}}
+    </div>
+
+  </div>
+  {{#if loggedIn}}
+  <script src="/javascript/accept-req.js"></script>
+  {{/if}}

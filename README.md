@@ -21,10 +21,10 @@ Originally planned to build a website to assist the elderly and disabled with da
 * Innocent Ngoy
 
 ## Roles
-Backend: Lisa Raposa Millar & Tony Meng
-front end: Sam Rankin & james Tietjen & Innocent Ngoy 
-README: Innocent Ngoy
-Presentation: Lisa Raposa Millar
+* Backend: Lisa Raposa Millar & Tony Meng
+* front end: Sam Rankin & james Tietjen & Innocent Ngoy 
+* README: Innocent Ngoy
+* Presentation: Lisa Raposa Millar
 
 ## Deployed site
 The deployed site of the applcation can be accessed by clicking

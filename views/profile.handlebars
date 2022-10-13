@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-auto">
-    <h2>Hello, {{requester.requester}}!</h2>
+    <h2 class="dashboard-greeting">Hello, {{requester.requester}}!</h2>
   </div>
 </div>
 
@@ -33,18 +33,18 @@
         <label for="post-postal">Postal Code</label>
         <input type="text" id="post-postal" name="post-postal" />
       </div>
-      <button type="submit" class="btn">Create</button>
+      <button type="submit" class="btn btn-primary">Create</button>
     </form>
   </div>
 
- <a href="/profile/accepted">Accepted Listings</a>
-   
+  <a href="/profile/accepted">Accepted Listings</a>
+
 
   <div class="col-md-6 blog-list">
     <h3>My Listings:</h3>
 
-  {{> posts-info}}
+    {{> posts-info}}
 
-</div>
+  </div>
 
-<script src="/javascript/create-post.js"></script>
+  <script src="/javascript/create-post.js"></script>

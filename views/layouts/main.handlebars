@@ -1,44 +1,46 @@
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chore Buddy</title>
-    {{!-- <link rel="stylesheet" href="chorebuddy.css" />
-    <link rel="stylesheet" href="style.css" /> --}}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chore Buddy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
 
-  </head>
+</head>
 
-  <body>
-    <div class="flex-column justify-space-around">
-      <header class="hero">
-        <h1 class="title">Chore Buddy</h1>
-        <nav class="nav">
+<body>
+  <div class="flex-column justify-space-around">
+    <header class="hero">
+      <h1 class="title">Chore Buddy</h1>
+      <nav class="nav">
 
-          <a href="/">Home</a>
+        <a href="/">Home</a>
 
-          {{#if loggedIn}}
-            <a href="/profile">Dashboard</a>
-            |
-            <button class="no-button" id="logout">logout</button>
-          {{else}}
-            <a href="/login">Login</a>
-          {{/if}}
-        </nav>
-      </header>
-      <main class="container container-fluid mt-5">
+        {{#if loggedIn}}
+        <a href="/profile">Dashboard</a>
 
-        {{{body}}}
-      </main>
-      <footer>
+        <button class="no-button" id="logout">Logout</button>
+        {{else}}
+        <a href="/login">Login</a>
+        {{/if}}
+      </nav>
+    </header>
+    <main class="container container-fluid mt-5">
 
-      </footer>
-    </div>
+      {{{body}}}
+    </main>
+    <footer>
 
-    {{#if loggedIn}}
-      <script src="/javascript/logout.js"></script>
-    {{/if}}
-    {{!-- <script src="comment.js"></script> --}}
-  </body>
+    </footer>
+  </div>
+
+  {{#if loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  {{/if}}
+  {{!--
+  <script src="comment.js"></script> --}}
+</body>
 
 </html>

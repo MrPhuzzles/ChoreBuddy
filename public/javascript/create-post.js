@@ -5,7 +5,7 @@ async function newFormHandler(event) {
     const content = document.querySelector('textarea[name="post-content"]').value;
     const address = document.querySelector('input[name="post-address"]').value;
     const city = document.querySelector('input[name="post-city"]').value;
-    const province = document.querySelector('input[name="post-province"]').value;
+    const province = document.querySelector('.form-select').value;
     const postal = document.querySelector('input[name="post-postal"]').value;
   
     const response = await fetch('/api/post', {

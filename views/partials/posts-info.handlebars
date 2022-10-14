@@ -7,9 +7,9 @@
       </h2>
       <div class="card-subtitle">
         {{#if loggedIn}}
-        <p>Created by <a href="/reviews/{{requester_id}}">{{ requester.requester_name}}</a> on {{format_date created_at}}</p>
+        <p>Created by <a href="/reviews">{{requester.requester_name}}</a> on {{format_date created_at}}</p>
           {{else}}
-       <p>Created by {{ requester.requester_name}}on {{format_date created_at}}
+       <p>Created by {{ requester.requester_name}} on {{format_date created_at}}
       {{/if}}
       </div>
       <div class="card-text">

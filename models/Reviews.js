@@ -29,8 +29,8 @@ Reviews.init(
     reviewee_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'post',
-          key: 'requester_id'
+          model: 'user',
+          key: 'id'
         }
       }
   },

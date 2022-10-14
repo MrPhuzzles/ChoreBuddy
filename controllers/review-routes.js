@@ -14,12 +14,10 @@ router.get('/', (req,res) => {
             {
                 model: User,
                 as: 'reviewee',
-                attributes: ['id',['username', 'reviewee_name'],],
-                where: {
-                    id: req.session.user_id
-                }
-                    }
-                ]
+                attributes: ['id', ['username', 'reviewer_name']],
+
+            }
+        ]
 
     })
     .then(dbReviewsData => {

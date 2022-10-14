@@ -110,6 +110,44 @@ router.get("/post/:id", (req, res) => {
     });
 });
 
+router.get('/user/:id', (req,res) => {
+    Reviews.findAll({
+        attributes: ['id', 'comment', 'reviewer_id', 'reviewee_id', 'created_at'],
+        include: [
+            {
+                model: User,
+                as: 'reviewer',
+                attributes: ['id',['username', 'reviewer_name']],
+            },
+            {
+                model: User,
+                as: 'reviewee',
+                attributes: ['id', ['username', 'reviewee_name']],
+                where:{
+                    id: req.params.id
+                }
+            }
+        ]
+
+    })
+    .then(dbReviewsData => {
+        const reviews = dbReviewsData.map((review) => review.get({plain:true}));
+        console.log(reviews)
+        let reviewee = ''
+        if(reviews[0]){
+            reviewee = reviews[0].reviewee.reviewee_name;
+        } 
+        res.render('reviews', {reviews,
+            reviewee,
+             loggedIn: req.session.loggedIn})
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    })
+})
+
+
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");

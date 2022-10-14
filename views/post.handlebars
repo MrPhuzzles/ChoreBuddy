@@ -25,7 +25,7 @@
     </div>
     <div class="card-footer">
       {{#if loggedIn}}
-      <p>Created by <a href="/reviews">{{post.requester.requester_name}}</a> on {{format_date post.created_at}}</p>
+      <p>Created by <a href="/user/{{post.requester.id}}">{{post.requester.requester_name}}</a> on {{format_date post.created_at}}</p>
       {{else}}
       <p>Created by {{post.requester.requester_name}} on {{format_date post.created_at}}</p>
       {{/if}}

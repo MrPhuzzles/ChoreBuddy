@@ -36,7 +36,7 @@ Reviews.belongsTo(User, {
 });
 Reviews.belongsTo(User, {
     foreignKey: 'reviewee_id',
-    as:'reviewee'
+    as: 'reviewee'
 });
 
 

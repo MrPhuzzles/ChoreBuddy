@@ -7,7 +7,7 @@ const reviews = require('./review-routes');
 router.use('/api', apiRoutes);
 router.use('/',homepage);
 router.use('/profile', profile);
-router.use('/reviews', reviews);
+// router.use('/reviews', reviews);
 router.use((req,res) => res.status(404).end())
 
 

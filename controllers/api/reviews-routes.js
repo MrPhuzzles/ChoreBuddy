@@ -50,7 +50,8 @@ router.get('/:id', (req, res) => {
 router.post('/', withAuth, (req, res) => {
     Reviews.create({
         comment: req.body.comment,
-        user_id: req.session.user_id
+        reviewee_id: req.body.user_id,
+        reviewer_id: req.session.user_id
     })
     .then(dbReviewData => {
         res.json(dbReviewData)

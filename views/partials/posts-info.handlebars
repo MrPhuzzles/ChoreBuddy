@@ -6,11 +6,11 @@
         <a href="/post/{{id}}">{{title}}</a>
       </h2>
       <div class="card-subtitle">
-        {{#if loggedIn}}
-        <p>Created by <a href="/reviews">{{requester.requester_name}}</a> on {{format_date created_at}}</p>
-          {{else}}
+        {{!-- {{#if loggedIn}} --}}
+        <p>Created by <a href="/user/{{requester.id}}">{{requester.requester_name}}</a> on {{format_date created_at}}</p>
+          {{!-- {{else}}
        <p>Created by {{ requester.requester_name}} on {{format_date created_at}}
-      {{/if}}
+      {{/if}} --}}
       </div>
       <div class="card-text">
         <p>

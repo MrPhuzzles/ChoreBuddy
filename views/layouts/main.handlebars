@@ -25,6 +25,7 @@
               <a class="nav-link active" aria-current="page" href="/">Home</a>
               {{#if loggedIn}}
               <a class="nav-link" href="/profile">Dashboard</a>
+              <a class="nav-link active" aria-current="page" href="/user/{{req.session.user_id}}">Home</a>
 
               <button class="btn btn-primary" id="logout">Logout</button>
               {{else}}

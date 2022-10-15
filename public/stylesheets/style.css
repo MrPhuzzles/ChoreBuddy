@@ -80,6 +80,14 @@ main {
     padding-bottom: 20px;
 }
 
+.reviews-header {
+    text-align: center;
+}
+
+.review-card {
+    text-align: center;
+}
+
 .navbar {
     background-color: #b4d18e;
     border-bottom: 1px solid #ccc;

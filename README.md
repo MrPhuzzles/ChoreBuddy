@@ -18,7 +18,7 @@ Originally planned to build a website to assist the elderly and disabled with da
 ## Team Members
 * Lisa Raposa Millar
 * Tony Meng
-* Sam Rankin
+* Sam Rankinhttps://chorebuddy.herokuapp.com/
 * James Tietjin
 * Innocent Ngoy
 

@@ -22,11 +22,18 @@ a:hover {
     color: #3486eb;
 }
 
+.btn a {
+    font-weight: normal;
+}
 
 button:hover {
     background-color: #3486eb;
 }
 
+.navbar a {
+    margin-left: 5px;
+    margin-right: 5px;
+}
 
 main {
     flex: 1;
@@ -38,7 +45,9 @@ main {
     line-height: 150%;
 }
 
-.listing-title {
+
+.listing-title,
+.listing-user {
     text-transform: capitalize;
 }
 

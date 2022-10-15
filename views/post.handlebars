@@ -1,9 +1,7 @@
 <div>
   <div class="card text-center">
     <div class="card-header">
-      <h2>
-        {{post.title}}
-      </h2>
+      <h2 class="listing-title"> {{post.title}} </h2>
     </div>
     <div class="card-body">
       <h5 class="card-title">{{post.address}} {{post.city}}
@@ -25,7 +23,9 @@
     </div>
     <div class="card-footer">
       {{#if loggedIn}}
-      <p>Created by <a href="/user/{{post.requester.id}}">{{post.requester.requester_name}}</a> on {{format_date post.created_at}}</p>
+      <p>Created by <a class="listing-user" href="/user/{{post.requester.id}}">{{post.requester.requester_name}}</a> on
+        {{format_date
+        post.created_at}}</p>
       {{else}}
       <p>Created by {{post.requester.requester_name}} on {{format_date post.created_at}}</p>
       {{/if}}

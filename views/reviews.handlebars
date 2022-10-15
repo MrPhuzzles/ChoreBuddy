@@ -1,19 +1,19 @@
-<div class="row">
+<div class="row justify-content-center">
   <div class="col-auto">
-    <h2>Hello, {{reviewee}}!</h2>
+    <h2 class="dashboard-greeting">{{reviewee}}'s Reviews!</h2>
   </div>
 </div>
 
 <div class="row mt-4">
   <div class="col-md-6">
-    <h3>Create New Listing:</h3>
+    <h3>Leave a review for, {{reviewee}}</h3>
 
     <form class="new-reviews-form">
-      <div>
-        <label for="review-comment">Comment</label>
-        <textarea id="review-comment" name="review-comment"></textarea>
+      <div class="input-group mb-3">
+        <span class="input-group-text">Comment</span>
+        <textarea id="review-comment" name="review-comment" class="form-control"></textarea>
       </div>
-      <button type="submit" class="btn">Create</button>
+      <button type="submit" class="btn btn-success">Create</button>
     </form>
   </div>
 
@@ -21,14 +21,14 @@
     <h3>Other Reviews:</h3>
 
     {{#each reviews}}
-        <div class="row mb-4 blog">
-          <div class="col-md-5">
-            <p>
-              {{comment}}
-            </p>
-            <p>Created by {{reviewer.reviewer_name}} on {{format_date created_at}}</p>
-          </div>
-        </div>
+    <div class="row mb-4 blog">
+      <div class="col-md-5">
+        <p>
+          {{comment}}
+        </p>
+        <p>Created by {{reviewer.reviewer_name}} on {{format_date created_at}}</p>
+      </div>
+    </div>
     {{/each}}
   </div>
 

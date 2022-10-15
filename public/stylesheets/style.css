@@ -9,6 +9,7 @@ html {
     margin: 0;
     font-family: sans-serif;
     color: #333;
+    background-image: url(../images/chorebuddy-bg.jpg);
 }
 
 a {
@@ -35,9 +36,10 @@ button:hover {
     margin-right: 5px;
 }
 
+
 main {
     flex: 1;
-    padding: 2% 4%;
+    padding: 1% 4%;
 }
 
 .post {
@@ -66,7 +68,11 @@ main {
 
 .homepage-greeting {
     text-align: center;
-    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.homepage-logo {
+    padding-bottom: 20px;
 }
 
 .homepage-greeting h2 {
@@ -74,13 +80,29 @@ main {
     padding-bottom: 20px;
 }
 
+.reviews-header {
+    text-align: center;
+}
+
+.review-card {
+    text-align: center;
+}
+
 .navbar {
     background-color: #b4d18e;
     border-bottom: 1px solid #ccc;
 }
 
+.flex-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 footer {
     border-top: 1px solid #ccc;
+    background-color: #b4d18e;
     display: flex;
     justify-content: center;
     padding: 1%;

@@ -9,6 +9,7 @@ router.get("/", (req, res) => {
       where: {
         request_taken: false,
       },
+      order: [['created_at','DESC']],
       attributes: ["id", "title", "content", "created_at"],
       include: [
         {
@@ -22,6 +23,7 @@ router.get("/", (req, res) => {
           attributes: [["username", "volunteer_name"]],
         },
       ],
+
     })
       .then((dbPostData) => {
         const post = dbPostData.map((post) => post.get({ plain: true }));

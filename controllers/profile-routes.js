@@ -62,7 +62,6 @@ router.get("/accepted", (req, res) => {
     .then((dbPostData) => {
       console.log("test")
       const acceptedPost = dbPostData.map((post) => post.get({ plain: true }));
-      console.log(acceptedPost)
       res.render("accepted-listings", { acceptedPost, loggedIn: req.session.loggedIn });
     })
     .catch((err) => {

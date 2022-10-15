@@ -24,7 +24,6 @@ router.get('/', (req,res) => {
     })
     .then(dbReviewsData => {
         const reviewsAboutMe = dbReviewsData.map((review) => review.get({plain:true}));
-        console.log(reviewsAboutMe)
         let user = ''
         if(reviewsAboutMe[0]){
             user = reviewsAboutMe[0].reviewee.reviewee_name

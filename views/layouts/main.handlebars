@@ -6,6 +6,7 @@
   <title>Chore Buddy</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
   <link rel="stylesheet" href="/stylesheets/style.css" />
 
 </head>
@@ -36,15 +37,18 @@
         </div>
       </nav>
     </header>
-    <main class="container container-fluid mt-3">
-      {{{body}}}
-    </main>
+    <div class="flex-wrapper">
+      <main class="container container-fluid mt-3">
+        {{{body}}}
+      </main>
 
+
+    </div>
     <footer>
-      <h3>Thanks for visiting!</h3>
+      <h2>Thank you for contributing!<i class="bi bi-balloon-heart"></i></h2>
+
     </footer>
   </div>
-
   {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
   {{/if}}
@@ -54,5 +58,7 @@
   {{!--
   <script src="comment.js"></script> --}}
 </body>
+
+
 
 </html>

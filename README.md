@@ -49,3 +49,7 @@ The deployed site of the application can be accessed by <a href=" https://choreb
   ### This application is covered under the [GPL v3.0](https://choosealicense.com/licenses/gpl-3.0/) license.
 
 <img src="./public/images/screenshot-1.jpg" width="500" />
+<img src="./public/images/screenshot-2.jpg" width="500" />
+<img src="./public/images/screenshot-3.jpg" width="500" />
+
+

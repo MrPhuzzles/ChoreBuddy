@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+  <div class="col-auto">
+    <h2 class="dashboard-greeting">Hello, {{requester.requester}}!</h2>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <h5>
+    <a href="/profile/accepted">Accepted Listings</a>
+  </h5>
+  <div class="col-sm-6 mt-3">
+    <h3>Create A New Listing:</h3>
+    <form class="new-post-form row g-3">
+      <div class="col-12">
+        <div class="input-group">
+          <span class="input-group-text">Title</span>
+          <input type="text" class="form-control" id="post-title" name="post-title" />
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="input-group">
+          <span class="input-group-text">Job Description</span>
+          <textarea id="post-content" class="form-control" name="post-content"></textarea>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="input-group">
+          <span class="input-group-text">Address</span>
+          <input type="text" id="post-address" class="form-control" name="post-address" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="input-group">
+          <span class="input-group-text">City</span>
+          <input type="text" id="post-city" class="form-control" name="post-city" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="input-group">
+          <span class="input-group-text">Postal</span>
+          <input type="text" id="post-postal" class="form-control" name="post-postal" />
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="input-group">
+          <span class="input-group-text">Province</span>
+          <select class="form-select" id="post-province" class="form-control" name="post-province">
+            <option selected disabled>Choose...</option>
+            <option value="Alberta">Alberta</option>
+            <option value="British Colombia">British Colombia</option>
+            <option value="Manitoba">Manitoba</option>
+            <option value="New Brunswick">New Brunswick</option>
+            <option value="Newfoundland">Newfoundland</option>
+            <option value="Nova Scotia">Nova Scotia</option>
+            <option value="Ontario">Ontario</option>
+            <option value="Prince Edward Island">Prince Edward Island</option>
+            <option value="Quebec">Quebec</option>
+            <option value="Saskatchewan">Saskatchewan</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+  </div>
+
+  <div class="col-sm-6 mt-3">
+    <h2>My Listings:</h2>
+    <div class="row mt-3 row-cols-1 row-cols-md-2 g-4">
+      {{> posts-info}}
+    </div>
+  </div>
+
+</div>
+
+<script src="/javascript/create-post.js"></script>

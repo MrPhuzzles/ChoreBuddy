@@ -14,20 +14,24 @@ router.get('/', (req,res) => {
             {
                 model: User,
                 as: 'reviewee',
-                attributes: ['id', ['username', 'reviewer_name']],
-
+                attributes: ['id', ['username', 'reviewee_name']],
+                where: {
+                    id: req.session.user_id,
+                }
             }
         ]
 
     })
     .then(dbReviewsData => {
-        const reviews = dbReviewsData.map((review) => review.get({plain:true}));
-        console.log(reviews)
-        // const reviewee = {reviewee: reviews[0].reviewee.reviewee_name}
-        // console.log(reviewee)
-        res.render('reviews', {reviews,
-            // reviewee,
-             loggedIn: req.session.loggedIn})
+        const reviewsAboutMe = dbReviewsData.map((review) => review.get({plain:true}));
+        console.log(reviewsAboutMe)
+        let user = ''
+        if(reviewsAboutMe[0]){
+            user = reviewsAboutMe[0].reviewee.reviewee_name
+        }
+        res.render('myreviews', {reviewsAboutMe,
+                        user,
+                         loggedIn: req.session.loggedIn})
     })
     .catch(err => {
         console.log(err);

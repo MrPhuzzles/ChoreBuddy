@@ -1,3 +1,4 @@
+{{#if reviewee}}
 <div class="row justify-content-center">
   <div class="col-auto">
     <h2 class="dashboard-greeting">{{reviewee}}'s Reviews</h2>
@@ -36,7 +37,29 @@
       {{/each}}
     </div>
   </div>
+</div>
+{{else}}
 
+<div class="row justify-content-center">
+  <div class="col-auto">
+    <h2 class="dashboard-greeting">No Reviews Available</h2>
+  </div>
 </div>
 
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Leave a review!</h3>
+
+    <form class="new-reviews-form">
+      <div class="input-group mb-3">
+        <span class="input-group-text">Comment</span>
+        <textarea id="review-comment" name="review-comment" class="form-control"></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Create</button>
+    </form>
+  </div>
+
+
+</div>
+{{/if}}
 <script src="/javascript/new-reviews.js"></script>

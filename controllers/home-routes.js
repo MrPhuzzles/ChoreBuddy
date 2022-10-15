@@ -4,7 +4,37 @@ const sequelize = require("../config/connection");
 const { Op } = require("sequelize");
 
 router.get("/", (req, res) => {
-  if (req.session.loggedIn) {
+  if (!req.session.loggedIn) {
+    Post.findAll({
+      where: {
+        request_taken: false,
+      },
+      attributes: ["id", "title", "content", "created_at"],
+      include: [
+        {
+          model: User,
+          as: "requester",
+          attributes: ["id", ["username", "requester_name"]],
+        },
+        {
+          model: User,
+          as: "volunteer",
+          attributes: [["username", "volunteer_name"]],
+        },
+      ],
+    })
+      .then((dbPostData) => {
+        const post = dbPostData.map((post) => post.get({ plain: true }));
+        console.log(post);
+        res.render("homepage", { post, loggedIn: req.session.loggedIn });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+
+  } else {
+
     Post.findAll({
       where: {
         request_taken: false,
@@ -29,35 +59,8 @@ router.get("/", (req, res) => {
       .then((dbPostData) => {
         const post = dbPostData.map((post) => post.get({ plain: true }));
         console.log(post)
-        res.render("homepage", { post, loggedIn: req.session.loggedIn });
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  } else {
-    Post.findAll({
-      where: {
-        request_taken: false,
-      },
-      attributes: ["id", "title", "content", "created_at"],
-      include: [
-        {
-          model: User,
-          as: "requester",
-          attributes: ["id", ["username", "requester_name"]],
-        },
-        {
-          model: User,
-          as: "volunteer",
-          attributes: [["username", "volunteer_name"]],
-        },
-      ],
-    })
-      .then((dbPostData) => {
-        const post = dbPostData.map((post) => post.get({ plain: true }));
-        console.log(post);
-        res.render("homepage", { post, loggedIn: req.session.loggedIn });
+      
+        res.render("homepage", { post, loggedIn:true});
       })
       .catch((err) => {
         console.log(err);
@@ -111,6 +114,7 @@ router.get("/post/:id", (req, res) => {
 });
 
 router.get('/user/:id', (req,res) => {
+
     Reviews.findAll({
         attributes: ['id', 'comment', 'reviewer_id', 'reviewee_id', 'created_at'],
         include: [
@@ -159,31 +163,5 @@ router.get("/login", (req, res) => {
 router.get("/signup", (req, res) => {
   res.render("signup");
 });
-
-// router.get('/reviews', (req, res) => {
-//     User.findOne({
-//         where: {
-//             username: req.body.username
-//         },
-//         attributes: ['id','username', 'email'],
-//         include: [
-//             {
-//                 model:Reviews,
-//                 attributes: ['id', 'comment', ['user_id', 'user_review'], 'created_at'],
-//                 through: Rel,
-//                 attributes: [['user_id', 'reviewer'], 'review_id']
-//             }
-//         ]
-//     })
-//     .then(dbUserData => {
-//         const reviewdata = dbUserData.map((reviews) => reviews.get({plain:true}));
-
-//         res.render('reviews', {reviewdata, loggedIn:req.session.loggedIn})
-//     })
-//     .catch(err => {
-//         console.log(err);
-//         res.status(500).json(err);
-//     })
-// })
 
 module.exports = router;

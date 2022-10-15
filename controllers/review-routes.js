@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const {User, Post, Reviews, Rel} = require('../models');
+const { User, Post, Reviews, } = require('../models');
 
-router.get('/', (req,res) => {
+router.get('/', (req, res) => {
     Reviews.findAll({
- 
+
         attributes: ['id', 'comment', 'reviewer_id', 'reviewee_id', 'created_at'],
         include: [
             {
@@ -22,20 +22,22 @@ router.get('/', (req,res) => {
         ]
 
     })
-    .then(dbReviewsData => {
-        const reviewsAboutMe = dbReviewsData.map((review) => review.get({plain:true}));
-        let user = ''
-        if(reviewsAboutMe[0]){
-            user = reviewsAboutMe[0].reviewee.reviewee_name
-        }
-        res.render('myreviews', {reviewsAboutMe,
-                        user,
-                         loggedIn: req.session.loggedIn})
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    })
+        .then(dbReviewsData => {
+            const reviewsAboutMe = dbReviewsData.map((review) => review.get({ plain: true }));
+            let user = ''
+            if (reviewsAboutMe[0]) {
+                user = reviewsAboutMe[0].reviewee.reviewee_name
+            }
+            res.render('myreviews', {
+                reviewsAboutMe,
+                user,
+                loggedIn: req.session.loggedIn
+            })
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        })
 })
 
 module.exports = router;

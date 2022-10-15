@@ -2,7 +2,6 @@
 const Post = require('./Post');
 const User = require('./User');
 const Reviews = require('./Reviews');
-const Rel = require('./Rel');
 
 // create associations
 User.hasMany(Post, {
@@ -42,4 +41,4 @@ Reviews.belongsTo(User, {
 
 
 
-module.exports = { User, Post, Reviews , Rel};
+module.exports = { User, Post, Reviews, };
